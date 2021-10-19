@@ -1,4 +1,4 @@
-from random import randint
+import random as rd
 
 # initialise cards by value in dictionary and lists
 
@@ -28,9 +28,11 @@ available_cards = {2: list2,
                    11: list_royals,
                    1: list_aces}
 
+# define function used to generate card.
 def draw_card():
-    num = randint(1, 12)
-    return num
+    num = rd.randint(1, 12)
+    card_drawn = rd.choice(available_cards[num])
+    return card_drawn
 
 
-print(draw_card())
+print(draw_card())    
