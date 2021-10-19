@@ -16,6 +16,8 @@ list_royals = ["Jack of hearts", "Jack of diamonds", "Jack of spades", "Jack of 
               "Queen of hearts", "Queen of diamonds", "Queen of spades", "Queen of clubs"]
 list_aces = ["Ace of hearts", "Ace of diamonds", "Ace of spades", "Ace of clubs"]
 
+super_list = [list2, list3, list4, list5, list6, list7, list8, list9, list10, list_royals, list_aces]
+
 available_cards = {2: list2,
                    3: list3,
                    4: list4,
@@ -30,9 +32,12 @@ available_cards = {2: list2,
 
 # define function used to generate card.
 def draw_card():
-    num = rd.randint(1, 12)
+    num = rd.randint(1, 11)
     card_drawn = rd.choice(available_cards[num])
+    for list in super_list:
+        if card_drawn in list:
+            list.remove(card_drawn)
     return card_drawn
 
-
-print(draw_card())    
+for i in range(1, 10):
+    print(draw_card())    
