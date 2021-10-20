@@ -1,5 +1,14 @@
 import random as rd
 
+"""
+This was the original blackjack.py file.
+However, after realising that I wanted to do a complete rebuild of the core systems, I decied that
+just storing this was a git commit was insufficient, as I wanted to have a prototype on hand at all
+times such that if need be I could compare the files and detect bugs or prototype new ideas easily.
+I'm fairly certain a similar effect can be achieved using branches in git, however I'm still very new
+to git and don't want to mess up and potentially use a day retrieving, reverting or recreating files.
+"""
+
 # initialise cards by value in dictionary and lists
 
 list2 = ["Two of hearts","Two of diamonds" ,"Two of spades", "Two of clubs"]
@@ -40,4 +49,4 @@ def draw_card():
     return card_drawn
 
 for i in range(1, 10):
-    print(draw_card())    
+    print(draw_card())
