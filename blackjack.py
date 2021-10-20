@@ -9,7 +9,7 @@ class Player:
 
     
     def __repr__(self):
-        return f"I am {self.name} and my current score is {self.score}."
+        return f"I am {self.name} and my current score is {self.score}.\n"
 
 
 def ace_score():
@@ -39,6 +39,7 @@ while not valid_count:
     players = int(input("How many players are we dealing with?\n"))
     if players > 1 and players < 5:
         valid_count = True
+        print("\n")
 
 
 if players == 2:
@@ -48,6 +49,7 @@ if players == 2:
     name_2 = input("Second player name: ")
     player_2 = Player(name_2)
     active_players.append(player_2)
+    print("\n")
     for player in active_players:
         print(player)
     time.sleep(2)
@@ -61,6 +63,7 @@ elif players == 3:
     name_3 = input("Third player name: ")
     player_3 = Player(name_3)
     active_players.append(player_3)
+    print("\n")
     for player in active_players:
         print(player)
     time.sleep(2)
@@ -77,6 +80,7 @@ elif players == 4:
     name_4 = input("Fourth player name: ")
     player_4 = Player(name_4)
     active_players.append(player_4)
+    print("\n")
     for player in active_players:
         print(player, "\n")
     time.sleep(2)
