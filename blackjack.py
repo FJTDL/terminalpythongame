@@ -1,43 +1,76 @@
 import random as rd
 
-# initialise cards by value in dictionary and lists
+def ace_score():
+        check = False
+        while not check:
+            score = int(input(f"You drew the {RNG_key} so choose 2 or 11. \n"))
+            if score == 2 or score == 11:
+                check = True
+                return score
 
-list2 = ["Two of hearts","Two of diamonds" ,"Two of spades", "Two of clubs"]
-list3 = ["Three of hearts", "Three of diamonds", "Three of spades", "Three of clubs"]
-list4 = ["Four of hearts", "Four of diamonds", "Four of spades", "Four of clubs"]
-list5 = ["Five of hearts", "Five of diamonds", "Five of spades", "Five of clubs"]
-list6 = ["Six of hearts", "Six of diamonds", "Six of spades", "Six of clubs"]
-list7 = ["Seven of hearts", "Seven of diamonds", "Seven of spades", "Seven of clubs"]
-list8 = ["Eight of hearts", "Eight of diamonds", "Eight of spades", "Eight of clubs"]
-list9 = ["Nine of hearts", "Nine of diamonds", "Nine of spades", "Nine of clubs"]
-list10 = ["Ten of hearts", "Ten of diamonds", "Ten of spades", "Ten of clubs"]
-list_royals = ["Jack of hearts", "Jack of diamonds", "Jack of spades", "Jack of clubs",
-              "King of hearts", "King of diamonds", "King of spades", "King of clubs",
-              "Queen of hearts", "Queen of diamonds", "Queen of spades", "Queen of clubs"]
-list_aces = ["Ace of hearts", "Ace of diamonds", "Ace of spades", "Ace of clubs"]
 
-super_list = [list2, list3, list4, list5, list6, list7, list8, list9, list10, list_royals, list_aces]
+# Dictionary of all values
+cards = {"Two Of Hearts": 2,
+    	   "Three Of Hearts": 3,
+         "Four Of Hearts": 4,
+         "Five Of Hearts": 5,
+         "Six Of Hearts": 6,
+         "Seven Of Hearts": 7,
+         "Eight Of Hearts": 8,
+         "Nine Of Hearts": 9,
+         "Ten Of Hearts": 10,
+         "Jack Of Hearts": 11,
+         "Queen Of Hearts": 11,
+         "King Of Hearts": 11,
+         "Ace Of Hearts": None,
 
-available_cards = {2: list2,
-                   3: list3,
-                   4: list4,
-                   5: list5,
-                   6: list6,
-                   7: list7,
-                   8: list8,
-                   9: list9,
-                   10: list10,
-                   11: list_royals,
-                   1: list_aces}
+         "Two Of Diamonds": 2,
+         "Three Of Diamonds": 3,
+         "Four Of Diamonds": 4,
+         "Five Of Diamonds": 5,
+         "Six Of Diamonds": 6,
+         "Seven Of Diamonds": 7,
+         "Eight Of Diamonds": 8,
+         "Nine Of Diamonds": 9,
+         "Ten Of Diamonds": 10,
+         "Jack Of Diamonds": 11,
+         "Queen Of Diamonds": 11,
+         "King Of Diamonds": 11,
+         "Ace Of Diamonds": None,
 
-# define function used to generate card.
-def draw_card():
-    num = rd.randint(1, 11)
-    card_drawn = rd.choice(available_cards[num])
-    for list in super_list:
-        if card_drawn in list:
-            list.remove(card_drawn)
-    return card_drawn
+         "Two Of Spades": 2,
+         "Three Of Spades": 3,
+         "Four Of Spades": 4,
+         "Five Of Spades": 5,
+         "Six Of Spades": 6,
+         "Seven Of Spades": 7,
+         "Eight Of Spades": 8,
+         "Nine Of Spades": 9,
+         "Ten Of Spades": 10,
+         "Jack Of Spades": 11,
+         "Queen Of Spades": 11,
+         "King Of Spades": 11,
+         "Ace Of Spades": None,
 
-for i in range(1, 10):
-    print(draw_card())    
+        "Two Of Clubs": 2,
+         "Three Of Clubs": 3,
+         "Four Of Clubs": 4,
+         "Five Of Clubs": 5,
+         "Six Of Clubs": 6,
+         "Seven Of Clubs": 7,
+         "Eight Of Clubs": 8,
+         "Nine Of Clubs": 9,
+         "Ten Of Clubs": 10,
+         "Jack Of Clubs": 11,
+         "Queen Of Clubs": 11,
+         "King Of Clubs": 11,
+         "Ace Of Clubs": None,
+}
+
+RNG_pair = rd.choice(list(cards.items()))
+RNG_key = RNG_pair[0]
+if RNG_key in ["Ace Of Clubs", "Ace Of Spades", "Ace Of Diamonds", "Ace Of Hearts"]:
+    print(ace_score())
+else:
+    print(RNG_key)
+    print(RNG_pair[1])
