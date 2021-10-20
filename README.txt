@@ -38,3 +38,13 @@ then it calls the function to determine the value of the card.
 
 Furthermore, all runnings of the program currently return both the value of the card and
 which card it was. This was done to add another layer of normalcy to the game.
+
+21/10/2020.
+Added the players as their own objects. Their class is not complex, but it did not need to be
+and I chose to make them unique classes as it was just easier for me, as it leaves the coding
+to be easier and I can store numerous attributes, functions and variables in the objects, even
+unique aspects for each player if necessary. I moved more code into functions as well, such as
+the random card generator (RCG) which means I can now call it as need be insetad of it running
+weirdly as it has done previously.
+
+That's it for today, the project is progressing well and to schedule.
