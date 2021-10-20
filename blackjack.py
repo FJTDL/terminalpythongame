@@ -1,4 +1,5 @@
 import random as rd
+import time
 
 class Player:
 
@@ -31,11 +32,16 @@ def draw():
 
 
 active_players = []
+print("WELCOME TO BLACK JACK!")
+valid_count = False
+while not valid_count:
+    print("2-4 players\n")
+    players = int(input("How many players are we dealing with?\n"))
+    if players > 1 and players < 5:
+        valid_count = True
 
-players = int(input("How many players are we dealing with?\n"))
-if players < 2:
-    print("You need at least two players!")
-elif players == 2:
+
+if players == 2:
     name_1 = input("First player name: ")
     player_1 = Player(name_1)
     active_players.append(player_1)
@@ -44,7 +50,37 @@ elif players == 2:
     active_players.append(player_2)
     for player in active_players:
         print(player)
-    
+    time.sleep(2)
+elif players == 3:
+    name_1 = input("First player name: ")
+    player_1 = Player(name_1)
+    active_players.append(player_1)
+    name_2 = input("Second player name: ")
+    player_2 = Player(name_2)
+    active_players.append(player_2)
+    name_3 = input("Third player name: ")
+    player_3 = Player(name_3)
+    active_players.append(player_3)
+    for player in active_players:
+        print(player)
+    time.sleep(2)
+elif players == 4:
+    name_1 = input("First player name: ")
+    player_1 = Player(name_1)
+    active_players.append(player_1)
+    name_2 = input("Second player name: ")
+    player_2 = Player(name_2)
+    active_players.append(player_2)
+    name_3 = input("Third player name: ")
+    player_3 = Player(name_3)
+    active_players.append(player_3)
+    name_4 = input("Fourth player name: ")
+    player_4 = Player(name_4)
+    active_players.append(player_4)
+    for player in active_players:
+        print(player, "\n")
+    time.sleep(2)
+
 # Dictionary of all values
 cards = {"Two Of Hearts": 2,
     	   "Three Of Hearts": 3,
