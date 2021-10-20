@@ -1,5 +1,16 @@
 import random as rd
 
+class Player:
+
+    def __init__(self, name):
+        self.name = name
+        self.score = 0
+
+    
+    def __repr__(self):
+        return f"I am {self.name} and my current score is {self.score}."
+
+
 def ace_score():
         check = False
         while not check:
@@ -9,6 +20,31 @@ def ace_score():
                 return score
 
 
+def draw():
+    RNG_pair = rd.choice(list(cards.items()))
+    RNG_key = RNG_pair[0]
+    if RNG_key in ["Ace Of Clubs", "Ace Of Spades", "Ace Of Diamonds", "Ace Of Hearts"]:
+        print(ace_score())
+    else:
+        print(RNG_key)
+        print(RNG_pair[1])
+
+
+active_players = []
+
+players = int(input("How many players are we dealing with?\n"))
+if players < 2:
+    print("You need at least two players!")
+elif players == 2:
+    name_1 = input("First player name: ")
+    player_1 = Player(name_1)
+    active_players.append(player_1)
+    name_2 = input("Second player name: ")
+    player_2 = Player(name_2)
+    active_players.append(player_2)
+    for player in active_players:
+        print(player)
+    
 # Dictionary of all values
 cards = {"Two Of Hearts": 2,
     	   "Three Of Hearts": 3,
@@ -66,11 +102,3 @@ cards = {"Two Of Hearts": 2,
          "King Of Clubs": 11,
          "Ace Of Clubs": None,
 }
-
-RNG_pair = rd.choice(list(cards.items()))
-RNG_key = RNG_pair[0]
-if RNG_key in ["Ace Of Clubs", "Ace Of Spades", "Ace Of Diamonds", "Ace Of Hearts"]:
-    print(ace_score())
-else:
-    print(RNG_key)
-    print(RNG_pair[1])
