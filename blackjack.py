@@ -3,6 +3,9 @@ import time
 
 class Player:
 
+    done = False
+    score = 0
+
     def __init__(self, name):
         self.name = name
         self.score = 0
@@ -12,23 +15,124 @@ class Player:
         return f"I am {self.name} and my current score is {self.score}.\n"
 
 
-def ace_score():
+def draw_1():
+    print(f"Ready {player_1.name}")
+    time.sleep(1)
+    global RNG_key
+    RNG_pair = rd.choice(list(cards.items()))
+    RNG_key = RNG_pair[0]
+    if RNG_key in ["Ace Of Clubs", "Ace Of Spades", "Ace Of Diamonds", "Ace Of Hearts"]:
         check = False
+        global score
         while not check:
             score = int(input(f"You drew the {RNG_key} so choose 2 or 11. \n"))
             if score == 2 or score == 11:
                 check = True
-                return score
+                player_1.score += score
+        print(player_1)
+    else:
+        print(RNG_key)
+        player_1.score += RNG_pair[1]
+        print(player_1)
+    while player_1.score <= 21:
+        finished = input("Hit or Stand?")
+        if finished.lower() == "stand":
+            break
+        else:
+            draw_1()
+    if player_1.score > 21:
+        player_1.score = 0
+        print(f"BUST")
 
 
-def draw():
+def draw_2():
+    print(f"Ready {player_2.name}")
+    time.sleep(1)
+    global RNG_key
     RNG_pair = rd.choice(list(cards.items()))
     RNG_key = RNG_pair[0]
     if RNG_key in ["Ace Of Clubs", "Ace Of Spades", "Ace Of Diamonds", "Ace Of Hearts"]:
-        print(ace_score())
+        check = False
+        global score
+        while not check:
+            score = int(input(f"You drew the {RNG_key} so choose 2 or 11. \n"))
+            if score == 2 or score == 11:
+                check = True
+                player_2.score += score
     else:
         print(RNG_key)
-        print(RNG_pair[1])
+        player_2.score += RNG_pair[1]
+        print(player_2)
+    while player_2.score <= 21:
+        finished = input("Hit or Stand?")
+        if finished.lower() == "stand":
+            break
+        else:
+            draw_2()
+    if player_2.score > 21:
+        player_2.score = 0
+        print(f"BUST")
+
+
+def draw_3():
+    print(f"Ready {player_3.name}")
+    time.sleep(1)
+    global RNG_key
+    RNG_pair = rd.choice(list(cards.items()))
+    RNG_key = RNG_pair[0]
+    cards.pop(RNG_key)
+    if RNG_key in ["Ace Of Clubs", "Ace Of Spades", "Ace Of Diamonds", "Ace Of Hearts"]:
+        check = False
+        global score
+        while not check:
+            score = int(input(f"You drew the {RNG_key} so choose 2 or 11. \n"))
+            if score == 2 or score == 11:
+                check = True
+                player_3.score += score
+    else:
+        print(RNG_key)
+        player_3.score += RNG_pair[1]
+        print(player_3)
+    while player_3.score <= 21:
+        finished = input("Hit or Stand?")
+        if finished.lower() == "stand":
+            break
+        else:
+            draw_3()
+    if player_3.score > 21:
+        player_3.score = 0
+        print(f"BUST")
+
+
+def draw_4():
+    print(f"Ready {player_4.name}")
+    time.sleep(1)
+    global RNG_key
+    RNG_pair = rd.choice(list(cards.items()))
+    RNG_key = RNG_pair[0]
+    cards.pop(RNG_key)
+    if RNG_key in ["Ace Of Clubs", "Ace Of Spades", "Ace Of Diamonds", "Ace Of Hearts"]:
+        check = False
+        global score
+        while not check:
+            score = int(input(f"You drew the {RNG_key} so choose 2 or 11. \n"))
+            if score == 2 or score == 11:
+                check = True
+                player_4.score += score
+    else:
+        print(RNG_key)
+        player_4.score += RNG_pair[1]
+        print(player_4)
+    while player_4.score <= 21:
+        finished = input("Hit or Stand?")
+        if finished.lower() == "stand":
+            break
+        else:
+            draw_4()
+    if player_4.score > 21:
+        player_4.score = 0
+        print(f"BUST")
+            
 
 
 active_players = []
@@ -142,3 +246,54 @@ cards = {"Two Of Hearts": 2,
          "King Of Clubs": 11,
          "Ace Of Clubs": None,
 }
+
+if players == 2:
+    
+    draw_1()
+    
+    draw_2()
+
+    if player_1.score > player_2.score:
+        print(f"{player_1.name} wins!")
+    elif player_2.score > player_1.score:
+        print(f"{player_2.name} wins!")
+    else:
+        print("We have a tie...")
+
+
+elif players == 3:
+
+    draw_1()
+
+    draw_2()
+
+    draw_3()
+
+    if player_1.score > player_2.score and player_1.score > player_3.score:
+        print(f"{player_1.name} wins!")
+    elif player_2.score > player_1.score and player_2.score > player_3.score:
+        print(f"{player_2.name} wins!")
+    elif player_3.score > player_2.score and player_3.score > player_1.score:
+        print(f"{player_3.name} wins!")
+    else:
+        print("We have a three way tie...")
+
+else:
+    draw_1()
+
+    draw_2()
+
+    draw_3()
+
+    draw_4()
+
+    if player_1.score > player_2.score and player_1.score > player_3.score and player_1.score > player_4.score:
+        print(f"{player_1.name} wins!")
+    elif player_2.score > player_1.score and player_2.score > player_3.score and player_2.score > player_4.score:
+        print(f"{player_2.name} wins!")
+    elif player_3.score > player_1.score and player_3.score > player_2.score and player_3.score > player_4.score:
+        print(f"{player_3.name} wins!")
+    elif player_4.score > player_1.score and player_4.score > player_2.score and player_4.score > player_3.score:
+        print(f"{player_4.name} wins!")
+    else:
+        print("INCREDIBLE! A FOUR WAY TIE!!!")
