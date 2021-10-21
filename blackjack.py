@@ -34,15 +34,16 @@ def draw_1():
         print(RNG_key)
         player_1.score += RNG_pair[1]
         print(player_1)
-    while player_1.score <= 21:
+    if player_1.score <= 21:
         finished = input("Hit or Stand?")
         if finished.lower() == "stand":
-            break
+            return None
         else:
             draw_1()
     if player_1.score > 21:
         player_1.score = 0
         print(f"BUST")
+        return None
 
 
 def draw_2():
@@ -63,15 +64,16 @@ def draw_2():
         print(RNG_key)
         player_2.score += RNG_pair[1]
         print(player_2)
-    while player_2.score <= 21:
+    if player_2.score <= 21:
         finished = input("Hit or Stand?")
         if finished.lower() == "stand":
-            break
+            return None
         else:
             draw_2()
     if player_2.score > 21:
         player_2.score = 0
         print(f"BUST")
+        return None
 
 
 def draw_3():
@@ -93,15 +95,16 @@ def draw_3():
         print(RNG_key)
         player_3.score += RNG_pair[1]
         print(player_3)
-    while player_3.score <= 21:
+    if player_3.score <= 21:
         finished = input("Hit or Stand?")
         if finished.lower() == "stand":
-            break
+            return None
         else:
             draw_3()
     if player_3.score > 21:
         player_3.score = 0
         print(f"BUST")
+        return None
 
 
 def draw_4():
@@ -123,15 +126,16 @@ def draw_4():
         print(RNG_key)
         player_4.score += RNG_pair[1]
         print(player_4)
-    while player_4.score <= 21:
+    if player_4.score <= 21:
         finished = input("Hit or Stand?")
         if finished.lower() == "stand":
-            break
+            return None
         else:
             draw_4()
     if player_4.score > 21:
         player_4.score = 0
         print(f"BUST")
+        return None
             
 
 
