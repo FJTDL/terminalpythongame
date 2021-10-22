@@ -61,3 +61,6 @@ DRY as it could be, nor is it as compact either. However, for a first serious at
 features, I am proud of my work and look forward to more opportunities to learn and grow with excitement.
 
 If you have read this file and taken an interest in my project, thank you for your time and consideration in supporting a 17 year old guy  Auckland New Zealand in his efforts to grow as an effective programmer.
+
+22/10/2021
+I FOUND A BUG WITH WHEN YOU SCORE 21 POINTS AND I FIXED.
