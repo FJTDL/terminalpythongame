@@ -34,12 +34,14 @@ def draw_1():
         print(RNG_key)
         player_1.score += RNG_pair[1]
         print(player_1)
-    if player_1.score <= 21:
+    if player_1.score < 21:
         finished = input("Hit or Stand?")
         if finished.lower() == "stand":
             return None
         else:
             draw_1()
+    if player_1.score == 21:
+        return None
     if player_1.score > 21:
         player_1.score = 0
         print(f"BUST")
@@ -64,12 +66,14 @@ def draw_2():
         print(RNG_key)
         player_2.score += RNG_pair[1]
         print(player_2)
-    if player_2.score <= 21:
+    if player_2.score < 21:
         finished = input("Hit or Stand?")
         if finished.lower() == "stand":
             return None
         else:
             draw_2()
+    if player_2.score == 21:
+        return None
     if player_2.score > 21:
         player_2.score = 0
         print(f"BUST")
@@ -95,12 +99,14 @@ def draw_3():
         print(RNG_key)
         player_3.score += RNG_pair[1]
         print(player_3)
-    if player_3.score <= 21:
+    if player_3.score < 21:
         finished = input("Hit or Stand?")
         if finished.lower() == "stand":
             return None
         else:
             draw_3()
+    if player_3.score == 21:
+        return None
     if player_3.score > 21:
         player_3.score = 0
         print(f"BUST")
@@ -126,12 +132,14 @@ def draw_4():
         print(RNG_key)
         player_4.score += RNG_pair[1]
         print(player_4)
-    if player_4.score <= 21:
+    if player_4.score < 21:
         finished = input("Hit or Stand?")
         if finished.lower() == "stand":
             return None
         else:
             draw_4()
+    if player_4.score == 21:
+        return None
     if player_4.score > 21:
         player_4.score = 0
         print(f"BUST")
@@ -259,8 +267,12 @@ if players == 2:
 
     if player_1.score > player_2.score:
         print(f"{player_1.name} wins!")
+        print(f"{player_1.name} : {player_1.score}\n")
+        print(f"{player_2.name} : {player_2.score}\n")
     elif player_2.score > player_1.score:
         print(f"{player_2.name} wins!")
+        print(f"{player_1.name} : {player_1.score}\n")
+        print(f"{player_2.name} : {player_2.score}\n")
     else:
         print("We have a tie...")
 
@@ -275,12 +287,21 @@ elif players == 3:
 
     if player_1.score > player_2.score and player_1.score > player_3.score:
         print(f"{player_1.name} wins!")
+        print(f"{player_1.name} : {player_1.score}\n")
+        print(f"{player_2.name} : {player_2.score}\n")
+        print(f"{player_3.name} : {player_3.score}\n")
     elif player_2.score > player_1.score and player_2.score > player_3.score:
         print(f"{player_2.name} wins!")
+        print(f"{player_1.name} : {player_1.score}\n")
+        print(f"{player_2.name} : {player_2.score}\n")
+        print(f"{player_3.name} : {player_3.score}\n")
     elif player_3.score > player_2.score and player_3.score > player_1.score:
         print(f"{player_3.name} wins!")
+        print(f"{player_1.name} : {player_1.score}\n")
+        print(f"{player_2.name} : {player_2.score}\n")
+        print(f"{player_3.name} : {player_3.score}\n")
     else:
-        print("We have a three way tie...")
+        print("We have a tie...")
 
 else:
     draw_1()
@@ -292,12 +313,32 @@ else:
     draw_4()
 
     if player_1.score > player_2.score and player_1.score > player_3.score and player_1.score > player_4.score:
-        print(f"{player_1.name} wins!")
+        print(f"{player_1.name} wins!\n")
+        print(f"{player_1.name} : {player_1.score}\n")
+        print(f"{player_2.name} : {player_2.score}\n")
+        print(f"{player_3.name} : {player_3.score}\n")
+        print(f"{player_4.name} : {player_4.score}\n")
     elif player_2.score > player_1.score and player_2.score > player_3.score and player_2.score > player_4.score:
         print(f"{player_2.name} wins!")
+        print(f"{player_1.name} : {player_1.score}\n")
+        print(f"{player_2.name} : {player_2.score}\n")
+        print(f"{player_3.name} : {player_3.score}\n")
+        print(f"{player_4.name} : {player_4.score}\n")
     elif player_3.score > player_1.score and player_3.score > player_2.score and player_3.score > player_4.score:
         print(f"{player_3.name} wins!")
+        print(f"{player_1.name} : {player_1.score}\n")
+        print(f"{player_2.name} : {player_2.score}\n")
+        print(f"{player_3.name} : {player_3.score}\n")
+        print(f"{player_4.name} : {player_4.score}\n")
     elif player_4.score > player_1.score and player_4.score > player_2.score and player_4.score > player_3.score:
         print(f"{player_4.name} wins!")
+        print(f"{player_1.name} : {player_1.score}\n")
+        print(f"{player_2.name} : {player_2.score}\n")
+        print(f"{player_3.name} : {player_3.score}\n")
+        print(f"{player_4.name} : {player_4.score}\n")
     else:
-        print("INCREDIBLE! A FOUR WAY TIE!!!")
+        print("We have a tie...")
+        print(f"{player_1.name} : {player_1.score}\n")
+        print(f"{player_2.name} : {player_2.score}\n")
+        print(f"{player_3.name} : {player_3.score}\n")
+        print(f"{player_4.name} : {player_4.score}\n")
