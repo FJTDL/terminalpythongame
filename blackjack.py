@@ -149,14 +149,24 @@ def draw_4():
 
 active_players = []
 print("WELCOME TO BLACK JACK!")
-valid_count = False
-while not valid_count:
-    print("2-4 players\n")
-    players = int(input("How many players are we dealing with?\n"))
-    if players > 1 and players < 5:
-        valid_count = True
-        print("\n")
 
+
+
+def starter():
+    global players
+    valid_count = False
+    while not valid_count:
+        print("2-4 players\n")
+        try:
+            players = int(input("How many players are we dealing with?\n"))
+            
+        except:
+            starter()
+        if 5 > players > 1:
+            valid_count = True
+    
+
+starter()
 
 if players == 2:
     name_1 = input("First player name: ")
