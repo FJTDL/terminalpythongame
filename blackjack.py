@@ -293,7 +293,8 @@ if players == 2:
         print(f"{player_2.name} : {player_2.score}\n")
     else:
         print("We have a tie...")
-
+        print(f"{player_1.name} : {player_1.score}\n")
+        print(f"{player_2.name} : {player_2.score}\n")
 
 elif players == 3:
 
@@ -320,6 +321,9 @@ elif players == 3:
         print(f"{player_3.name} : {player_3.score}\n")
     else:
         print("We have a tie...")
+        print(f"{player_1.name} : {player_1.score}\n")
+        print(f"{player_2.name} : {player_2.score}\n")
+        print(f"{player_3.name} : {player_3.score}\n")
 
 else:
     draw_1()
