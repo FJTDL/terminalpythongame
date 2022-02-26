@@ -1,6 +1,8 @@
+# Importing libraries.
 import random as rd
 import time
 
+# Defining player class
 class Player:
 
     done = False
@@ -14,7 +16,7 @@ class Player:
     def __repr__(self):
         return f"I am {self.name} and my current score is {self.score}.\n"
 
-
+# Defininf methods for players to draw.
 def draw_1():
     print(f"Ready {player_1.name}")
     time.sleep(1)
@@ -154,12 +156,12 @@ def draw_4():
         return None
             
 
-
+# Starting the game
 active_players = []
 print("WELCOME TO BLACK JACK!")
 
 
-
+# Function used to start game
 def starter():
     global players
     valid_count = False
@@ -173,9 +175,10 @@ def starter():
         if 5 > players > 1:
             valid_count = True
     
-
+# Starts game
 starter()
 
+# Start of game logic
 if players == 2:
     name_1 = input("First player name: ")
     player_1 = Player(name_1)
