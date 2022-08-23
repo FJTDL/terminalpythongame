@@ -170,91 +170,18 @@ elif players == 4:
         print(player, "\n")
     time.sleep(2)
 
+for player in active_players:
+    player.draw()
 
-if players == 2:
-    
-    player_1.draw()
+winner = Player("Holder")
+for player in active_players:
+    if player.score > winner.score:
+        winner = player
+    elif player.score == winner.score:
+        winner = Player("...None, we have a draw")
+        winner.score = player.score
 
-    player_2.draw()
 
-    if player_1.score > player_2.score:
-        print(f"{player_1.name} wins!")
-        print(f"{player_1.name} : {player_1.score}\n")
-        print(f"{player_2.name} : {player_2.score}\n")
-    elif player_2.score > player_1.score:
-        print(f"{player_2.name} wins!")
-        print(f"{player_1.name} : {player_1.score}\n")
-        print(f"{player_2.name} : {player_2.score}\n")
-    else:
-        print("We have a tie...")
-        print(f"{player_1.name} : {player_1.score}\n")
-        print(f"{player_2.name} : {player_2.score}\n")
-
-elif players == 3:
-
-    player_1.draw()
-
-    player_2.draw()
-
-    player_3.draw()
-
-    if player_1.score > player_2.score and player_1.score > player_3.score:
-        print(f"{player_1.name} wins!")
-        print(f"{player_1.name} : {player_1.score}\n")
-        print(f"{player_2.name} : {player_2.score}\n")
-        print(f"{player_3.name} : {player_3.score}\n")
-    elif player_2.score > player_1.score and player_2.score > player_3.score:
-        print(f"{player_2.name} wins!")
-        print(f"{player_1.name} : {player_1.score}\n")
-        print(f"{player_2.name} : {player_2.score}\n")
-        print(f"{player_3.name} : {player_3.score}\n")
-    elif player_3.score > player_2.score and player_3.score > player_1.score:
-        print(f"{player_3.name} wins!")
-        print(f"{player_1.name} : {player_1.score}\n")
-        print(f"{player_2.name} : {player_2.score}\n")
-        print(f"{player_3.name} : {player_3.score}\n")
-    else:
-        print("We have a tie...")
-        print(f"{player_1.name} : {player_1.score}\n")
-        print(f"{player_2.name} : {player_2.score}\n")
-        print(f"{player_3.name} : {player_3.score}\n")
-
-else:
-    player_1.draw()
-
-    player_2.draw()
-
-    player_3.draw()
-
-    player_4.draw()
-
-    if player_1.score > player_2.score and player_1.score > player_3.score and player_1.score > player_4.score:
-        print(f"{player_1.name} wins!\n")
-        print(f"{player_1.name} : {player_1.score}\n")
-        print(f"{player_2.name} : {player_2.score}\n")
-        print(f"{player_3.name} : {player_3.score}\n")
-        print(f"{player_4.name} : {player_4.score}\n")
-    elif player_2.score > player_1.score and player_2.score > player_3.score and player_2.score > player_4.score:
-        print(f"{player_2.name} wins!")
-        print(f"{player_1.name} : {player_1.score}\n")
-        print(f"{player_2.name} : {player_2.score}\n")
-        print(f"{player_3.name} : {player_3.score}\n")
-        print(f"{player_4.name} : {player_4.score}\n")
-    elif player_3.score > player_1.score and player_3.score > player_2.score and player_3.score > player_4.score:
-        print(f"{player_3.name} wins!")
-        print(f"{player_1.name} : {player_1.score}\n")
-        print(f"{player_2.name} : {player_2.score}\n")
-        print(f"{player_3.name} : {player_3.score}\n")
-        print(f"{player_4.name} : {player_4.score}\n")
-    elif player_4.score > player_1.score and player_4.score > player_2.score and player_4.score > player_3.score:
-        print(f"{player_4.name} wins!")
-        print(f"{player_1.name} : {player_1.score}\n")
-        print(f"{player_2.name} : {player_2.score}\n")
-        print(f"{player_3.name} : {player_3.score}\n")
-        print(f"{player_4.name} : {player_4.score}\n")
-    else:
-        print("We have a tie...")
-        print(f"{player_1.name} : {player_1.score}\n")
-        print(f"{player_2.name} : {player_2.score}\n")
-        print(f"{player_3.name} : {player_3.score}\n")
-        print(f"{player_4.name} : {player_4.score}\n")
+print(f"The winner is {winner.name}!")
+for player in active_players:
+    print(f"{player.name}: {player.score}")
