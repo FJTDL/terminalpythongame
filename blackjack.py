@@ -16,211 +16,40 @@ class Player:
     def __repr__(self):
         return f"I am {self.name} and my current score is {self.score}.\n"
 
-# Defininf methods for players to draw.
-def draw_1():
-    print(f"Ready {player_1.name}")
-    time.sleep(1)
-    global RNG_key
-    RNG_pair = rd.choice(list(cards.items()))
-    RNG_key = RNG_pair[0]
-    if RNG_key in ["Ace Of Clubs", "Ace Of Spades", "Ace Of Diamonds", "Ace Of Hearts"]:
+    def draw(self):
+      print(f"Ready {self.name}")
+      time.sleep(1)
+      global RNG_key
+      RNG_pair = rd.choice(list(cards.items()))
+      RNG_key = RNG_pair[0]
+      if RNG_key in ["Ace Of Clubs", "Ace Of Spades", "Ace Of Diamonds", "Ace Of Hearts"]:
         check = False
         global score
         while not check:
             score = int(input(f"You drew the {RNG_key} so choose 2 or 11. \n"))
             if score == 2 or score == 11:
                 check = True
-                player_1.score += score
-        print(player_1)
-    else:
+                self.score += score
+        print(self)
+      else:
         print(RNG_key)
-        player_1.score += RNG_pair[1]
-        print(player_1)
-    if player_1.score < 21:
+        self.score += RNG_pair[1]
+        print(self)
+      if self.score < 21:
         finished = None
         while finished not in ["hit", "stand"]:
             finished = input("Hit or Stand?").lower()
         if finished.lower() == "stand":
             return None
         else:
-            draw_1()
-    if player_1.score == 21:
+          self.draw()
+      if self.score == 21:
         return None
-    if player_1.score > 21:
-        player_1.score = 0
+      if self.score > 21:
+        self.score = 0
         print(f"BUST")
         return None
 
-
-def draw_2():
-    print(f"Ready {player_2.name}")
-    time.sleep(1)
-    global RNG_key
-    RNG_pair = rd.choice(list(cards.items()))
-    RNG_key = RNG_pair[0]
-    if RNG_key in ["Ace Of Clubs", "Ace Of Spades", "Ace Of Diamonds", "Ace Of Hearts"]:
-        check = False
-        global score
-        while not check:
-            score = int(input(f"You drew the {RNG_key} so choose 2 or 11. \n"))
-            if score == 2 or score == 11:
-                check = True
-                player_2.score += score
-    else:
-        print(RNG_key)
-        player_2.score += RNG_pair[1]
-        print(player_2)
-    if player_2.score < 21:
-        finished = None
-        while finished not in ["hit", "stand"]:
-            finished = input("Hit or Stand?").lower()
-        if finished.lower() == "stand":
-            return None
-        else:
-            draw_2()
-    if player_2.score == 21:
-        return None
-    if player_2.score > 21:
-        player_2.score = 0
-        print(f"BUST")
-        return None
-
-
-def draw_3():
-    print(f"Ready {player_3.name}")
-    time.sleep(1)
-    global RNG_key
-    RNG_pair = rd.choice(list(cards.items()))
-    RNG_key = RNG_pair[0]
-    cards.pop(RNG_key)
-    if RNG_key in ["Ace Of Clubs", "Ace Of Spades", "Ace Of Diamonds", "Ace Of Hearts"]:
-        check = False
-        global score
-        while not check:
-            score = int(input(f"You drew the {RNG_key} so choose 2 or 11. \n"))
-            if score == 2 or score == 11:
-                check = True
-                player_3.score += score
-    else:
-        print(RNG_key)
-        player_3.score += RNG_pair[1]
-        print(player_3)
-    if player_3.score < 21:
-        finished = None
-        while finished not in ["hit", "stand"]:
-            finished = input("Hit or Stand?").lower()
-        if finished.lower() == "stand":
-            return None
-        else:
-            draw_3()
-    if player_3.score == 21:
-        return None
-    if player_3.score > 21:
-        player_3.score = 0
-        print(f"BUST")
-        return None
-
-
-def draw_4():
-    print(f"Ready {player_4.name}")
-    time.sleep(1)
-    global RNG_key
-    RNG_pair = rd.choice(list(cards.items()))
-    RNG_key = RNG_pair[0]
-    cards.pop(RNG_key)
-    if RNG_key in ["Ace Of Clubs", "Ace Of Spades", "Ace Of Diamonds", "Ace Of Hearts"]:
-        check = False
-        global score
-        while not check:
-            score = int(input(f"You drew the {RNG_key} so choose 2 or 11. \n"))
-            if score == 2 or score == 11:
-                check = True
-                player_4.score += score
-    else:
-        print(RNG_key)
-        player_4.score += RNG_pair[1]
-        print(player_4)
-    if player_4.score < 21:
-        finished = None
-        while finished not in ["hit", "stand"]:
-            finished = input("Hit or Stand?").lower()
-        if finished.lower() == "stand":
-            return None
-        else:
-            draw_4()
-    if player_4.score == 21:
-        return None
-    if player_4.score > 21:
-        player_4.score = 0
-        print(f"BUST")
-        return None
-            
-
-# Starting the game
-active_players = []
-print("WELCOME TO BLACK JACK!")
-
-
-# Function used to start game
-def starter():
-    global players
-    valid_count = False
-    while not valid_count:
-        print("2-4 players\n")
-        try:
-            players = int(input("How many players are we dealing with?\n"))
-            
-        except:
-            starter()
-        if 5 > players > 1:
-            valid_count = True
-    
-# Starts game
-starter()
-
-# Start of game logic
-if players == 2:
-    name_1 = input("First player name: ")
-    player_1 = Player(name_1)
-    active_players.append(player_1)
-    name_2 = input("Second player name: ")
-    player_2 = Player(name_2)
-    active_players.append(player_2)
-    print("\n")
-    for player in active_players:
-        print(player)
-    time.sleep(2)
-elif players == 3:
-    name_1 = input("First player name: ")
-    player_1 = Player(name_1)
-    active_players.append(player_1)
-    name_2 = input("Second player name: ")
-    player_2 = Player(name_2)
-    active_players.append(player_2)
-    name_3 = input("Third player name: ")
-    player_3 = Player(name_3)
-    active_players.append(player_3)
-    print("\n")
-    for player in active_players:
-        print(player)
-    time.sleep(2)
-elif players == 4:
-    name_1 = input("First player name: ")
-    player_1 = Player(name_1)
-    active_players.append(player_1)
-    name_2 = input("Second player name: ")
-    player_2 = Player(name_2)
-    active_players.append(player_2)
-    name_3 = input("Third player name: ")
-    player_3 = Player(name_3)
-    active_players.append(player_3)
-    name_4 = input("Fourth player name: ")
-    player_4 = Player(name_4)
-    active_players.append(player_4)
-    print("\n")
-    for player in active_players:
-        print(player, "\n")
-    time.sleep(2)
 
 # Dictionary of all values
 cards = {"Two Of Hearts": 2,
@@ -280,11 +109,73 @@ cards = {"Two Of Hearts": 2,
          "Ace Of Clubs": None,
 }
 
+# Starting the game
+active_players = []
+print("WELCOME TO BLACK JACK!")
+
+def starter():
+    global players
+    valid_count = False
+    while not valid_count:
+        print("2-4 players\n")
+        try:
+            players = int(input("How many players are we dealing with?\n"))
+        except:
+            starter()
+        if 5 > players > 1:
+            valid_count = True
+
+starter()
+
+if players == 2:
+    name_1 = input("First player name: ")
+    player_1 = Player(name_1)
+    active_players.append(player_1)
+    name_2 = input("Second player name: ")
+    player_2 = Player(name_2)
+    active_players.append(player_2)
+    print("\n")
+    for player in active_players:
+        print(player)
+    time.sleep(2)
+elif players == 3:
+    name_1 = input("First player name: ")
+    player_1 = Player(name_1)
+    active_players.append(player_1)
+    name_2 = input("Second player name: ")
+    player_2 = Player(name_2)
+    active_players.append(player_2)
+    name_3 = input("Third player name: ")
+    player_3 = Player(name_3)
+    active_players.append(player_3)
+    print("\n")
+    for player in active_players:
+        print(player)
+    time.sleep(2)
+elif players == 4:
+    name_1 = input("First player name: ")
+    player_1 = Player(name_1)
+    active_players.append(player_1)
+    name_2 = input("Second player name: ")
+    player_2 = Player(name_2)
+    active_players.append(player_2)
+    name_3 = input("Third player name: ")
+    player_3 = Player(name_3)
+    active_players.append(player_3)
+    name_4 = input("Fourth player name: ")
+    player_4 = Player(name_4)
+    active_players.append(player_4)
+    print("\n")
+    for player in active_players:
+        print(player, "\n")
+    time.sleep(2)
+
+
 if players == 2:
     
-    draw_1()
-    
-    draw_2()
+    player_1.draw()
+
+    player_2.draw()
 
     if player_1.score > player_2.score:
         print(f"{player_1.name} wins!")
@@ -301,11 +192,11 @@ if players == 2:
 
 elif players == 3:
 
-    draw_1()
+    player_1.draw()
 
-    draw_2()
+    player_2.draw()
 
-    draw_3()
+    player_3.draw()
 
     if player_1.score > player_2.score and player_1.score > player_3.score:
         print(f"{player_1.name} wins!")
@@ -329,13 +220,13 @@ elif players == 3:
         print(f"{player_3.name} : {player_3.score}\n")
 
 else:
-    draw_1()
+    player_1.draw()
 
-    draw_2()
+    player_2.draw()
 
-    draw_3()
+    player_3.draw()
 
-    draw_4()
+    player_4.draw()
 
     if player_1.score > player_2.score and player_1.score > player_3.score and player_1.score > player_4.score:
         print(f"{player_1.name} wins!\n")
